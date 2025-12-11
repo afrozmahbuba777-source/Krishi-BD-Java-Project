@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Modern Agriculture</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            background-image: url('/Images/plantation.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-box input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-box button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background-color: #27ae60;
+        }
+        .login-box a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .login-box a:hover {
+            text-decoration: underline;
+        }
+        .checkbox-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .forgot-password {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="login-box">
+        <h2>Login</h2>
+        <div id="successAlert" th:if="${Dto.registrationSuccess}" style="display: none; color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 10px; margin: 10px 0; border-radius: 5px;">
+            Thanks for your registration-please Log in!
+        </div>
+
+        <script>
+            // Show the success alert
+            document.getElementById('successAlert').style.display = 'block';
+        </script>
+
+
+        <form id="loginForm" method="post" th:action="@{/login}" th:object="${Dto}">
+            <input type="text" id="email" name="email" th:field="*{email}" placeholder="Email" required>
+            <input type="password" id="password" name="password" th:field="*{password}" placeholder="Password" required>
+
+            <div class="checkbox-container">
+                <label>
+                    <input type="checkbox" id="rememberMe" name="rememberMe" th:field="*{rememberMe}"/>
+                    Remember this device
+                </label>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" value="Login">Login</button>
+        </form>
+        <p>Don't have an account? <a href="registration">Register here</a></p> <!-- Link to registration page -->
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+
+
+    });
+</script>
+</body>
+</html>

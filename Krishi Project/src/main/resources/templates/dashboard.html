@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Smart Krishi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-image: url('/Images/RegistrationBG3.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            display: inline-block;
+            padding-right: 120px;
+        }
+
+        .menu-bar {
+            width: 250px;
+            background-color: #26663b;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-bar h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu-bar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-bar a:hover {
+            background-color: #45a049;
+        }
+
+        .menu-bar a.active {
+            background-color: #388e3c;
+        }
+
+        .content-area {
+            margin-left: 270px;
+            width: calc(100% - 270px);
+            padding: 20px;
+            background-color: #222;
+            flex-grow: 1;
+        }
+
+        .table-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #B2E5A5;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-radius: 8px;
+            background-color: white;
+            color: black;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #12632d;
+            color: white;
+        }
+
+        td {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-bar">
+    <h3>Menu</h3>
+    <a href="home" class="active">Home</a>
+    <a href="login">Login</a>
+    <a href="registration">Registration</a>
+    <a href="productcard">Product</a>
+    <a href="training">Training</a>
+    <a href="plantation">Schedule Farming</a>
+</div>
+
+<div class="content-area">
+    <header>
+        <h1>Admin Dashboard - Agricultural Website</h1>
+        <button  class="logout-button">Log Out</button>
+    </header>
+
+    <div class="table-section">
+        <h2 class="section-title">User List</h2>
+        <table id="userTable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>User Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user :${userList}">
+                <td th:text="${user.fullName}"></td>
+                <td th:text="${user.phoneNumber}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.address}"></td>
+                <td th:text="${user.userType}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Scheduled Harvest Table -->
+    <div class="table-section">
+        <h2 class="section-title">Scheduled Harvest</h2>
+        <table id="scheduledHarvestTable">
+            <thead>
+            <tr>
+                <th>Planting Date</th>
+                <th>Harvest Date</th>
+                <th>Crop Type</th>
+                <th>Field Size</th>
+                <th>Water Source</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="Plantation : ${plantation}">
+                <td th:text="${plantation.plantingDate}"></td>
+                <td th:text="${plantation.harvestDate}"></td>
+                <td th:text="${plantation.cropType}"></td>
+                <td th:text="${plantation.fieldSize}"></td>
+                <td th:text="${plantation.waterSource}"></td>
+            </tr>
+
+
+            <!-- Data will be dynamically loaded from MySQL -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-section">
+        <h2 class="section-title">Trainee List</h2>
+        <table id="traineeTable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Training Program</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Data will be dynamically loaded -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

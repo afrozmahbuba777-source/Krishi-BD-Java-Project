@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      background-image: url("/images/registrationBG.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .registration-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .registration-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    .registration-box h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #2c3e50;
+    }
+    .registration-box form {
+      display: flex;
+      flex-direction: column;
+    }
+    .registration-box input {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .primary-button {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .primary-button button {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .primary-button button:hover {
+      background-color: #a8e6cf;
+    }
+    .registration-box a {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .registration-box a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="registration-container">
+  <div class="registration-box">
+    <h2>Register Here</h2>
+    <form method="post" th:action="@{/registration}" th:object="${Dto}" id="registrationForm">
+      <input type="text" id="firstName" name="firstName" placeholder="First Name" th:field="*{firstName}" required>
+      <input type="text" id="lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}" required>
+      <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone No" th:field="*{phoneNumber}" required>
+      <input type="text" id="email" name="email" placeholder="Email" th:field="*{email}" required>
+      <input type="text" id="address" name="address" placeholder="Address" th:field="*{address}" required>
+      <input type="password" id="password" name="password" placeholder="Password" th:field="*{password}" required>
+      <div class="primary-button">
+        <button type="submit" value="Register">Register</button>
+      </div>
+    </form>
+    <p>Already have an account? <a href="login">Login here</a></p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('registrationForm').addEventListener('submit', function (e) {
+
+
+  });
+</script>
+</body>
+</html>

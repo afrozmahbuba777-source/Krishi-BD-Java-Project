@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agriculture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url("/Images/plantation.jpg");
+
+            height: 100%;
+            display: flex;
+        }
+
+        /* Menu Bar */
+        .menu-bar {
+            width: 250px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-bar h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu-bar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-bar a:hover {
+            background-color: #388e3c;
+        }
+
+        .menu-bar a.active {
+            background-color: #2c6b3c;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            margin-left: 270px;
+            width: calc(100% - 270px);
+            padding: 50px;
+            background-color: #f0f9e8;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Form Section */
+        .form-container {
+            width: 50%;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 0 auto;
+
+            background-size: cover;
+        }
+
+        .form-container h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button,
+        .form-container label {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+
+        .form-container input:focus,
+        .form-container select:focus {
+            border: 2px solid #4CAF50;
+            outline: none;
+            background-color: #f9fdf9;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-around;
+                padding-top: 10px;
+                height: auto;
+            }
+
+            .menu-bar a {
+                width: auto;
+                margin: 0;
+                padding: 10px 15px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .form-container {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menu Bar -->
+<div class="menu-bar">
+    <h3>Menu</h3>
+    <a href="home" class="active">Home</a>
+    <a href="login">Login</a>
+    <a href="registration">Registration</a>
+    <a href="productcard">Product</a>
+    <a href="training">Training</a>
+
+</div>
+
+<!-- Main Content Section -->
+<div class="main-content">
+    <div class="form-container">
+        <h2>We hire farmers for Harvesting on your Land , schedule now !</h2>
+        <form method="post" th:action="@{/plantation}" th:object="${dto}">
+            <label>Planting Date</label>
+            <input type="date" th:field="*{plantingDate}" required>
+
+            <label>Harvest Date</label>
+            <input type="date" th:field="*{harvestDate}" required>
+
+            <label>Crop Type</label>
+            <input type="text" th:field="*{cropType}" placeholder="e.g., Corn, Wheat" required>
+
+            <label>Field Size (in Acres)</label>
+            <input type="number" min="1" th:field="*{fieldSize}" required>
+
+            <label>Water Source</label>
+            <select th:field="*{waterSource}" required>
+                <option value="">Select a source</option>
+                <option value="Irrigation">Irrigation</option>
+                <option value="Rainwater">Rainwater</option>
+                <option value="Well">Well</option>
+                <option value="River">River</option>
+            </select>
+
+            <button type="submit">Schedule Now</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

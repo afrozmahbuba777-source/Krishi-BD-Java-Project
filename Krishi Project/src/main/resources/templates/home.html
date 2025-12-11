@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Smart Agriculture</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .welcome-container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .welcome-container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 76px;
+            font-weight: bold;
+            color: white; /* Light green */
+            text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .welcome-container p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: white;
+            background-color: rgba(39, 174, 96, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .button-container a:hover {
+            background-color: rgba(46, 204, 113, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body style="background-image: url('/Images/RegistrationBG3.jpg');">
+<div class="welcome-container">
+    <h1>Welcome to Smart Krishi</h1>
+    <p>Your gateway to modern, data-driven agricultural solutions.</p>
+    <div class="button-container">
+        <a href="login">Login</a>
+        <a href="registration">Register</a>
+    </div>
+</div>
+</body>
+</html>
